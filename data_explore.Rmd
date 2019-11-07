@@ -5,7 +5,14 @@ output:
     keep_md: yes
 ---
 
-```{r setup, include=FALSE}
-
+```{r, message=FALSE, warning=FALSE}
+library(moderndive)
+library(skimr)
+library(GGally)
+library(openintro)
+library(broom) 
+library(tidyverse)
+library(alr4)
+library(ggridges)
 ```
 
