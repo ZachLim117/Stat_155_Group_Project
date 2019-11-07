@@ -1,0 +1,39 @@
+---
+title: "Github for Collab"
+output:
+  html_document:
+    keep_md: yes
+---
+
+```{r, message=FALSE, warning=FALSE}
+library(moderndive)
+library(skimr)
+library(GGally)
+library(openintro)
+library(broom) 
+library(tidyverse)
+library(alr4)
+library(ggridges)
+library(fivethirtyeight)
+```
+
+
+```{r}
+san_andreas %>% 
+  ggplot() +
+  geom_bar(aes(x = worry_bigone, fill = region))
+```
+
+```{r}
+san_andreas %>% 
+  ggplot() +
+  geom_jitter(aes(x = age, y = experience, color = prepared))
+```
+
+```{r}
+san_andreas %>% 
+  ggplot() +
+  geom_bar(aes(x = fam_san_andreas, fill = worry_bigone))
+```
+
+
