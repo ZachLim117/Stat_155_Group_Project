@@ -28,6 +28,11 @@ san_andreas %>%
 ```{r}
 san_andreas %>% 
   ggplot() +
-  geom_jitter(aes(x = age, y = fam_san_andreas, color = experience))
+  geom_jitter(aes(x = age, y = experience, color = prepared))
+```
+```{r}
+san_andreas %>% 
+  ggplot() +
+  geom_bar(aes(x = fam_san_andreas, fill = worry_bigone))
 ```
 
