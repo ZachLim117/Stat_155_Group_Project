@@ -14,5 +14,6 @@ library(broom)
 library(tidyverse)
 library(alr4)
 library(ggridges)
+library(fivethirtyeight)
 ```
 
