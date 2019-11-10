@@ -16,11 +16,13 @@ library(openintro)
 library(broom) 
 library(tidyverse)
 library(alr4)
+library(ggmosaic)
 library(ggridges)
 library(fivethirtyeight)
+HEAD
 ```
 
-#Is it rude to recline your seat while on the airplane?
+##Is it rude to recline your seat while on the airplane?
 
 In this investigation, we will be using the data from *flying* posted by the *fivethirtyeight* package. We are interested in what factor(s) affects people perception of rudeness on the plane. The response variable here is whether people think reclining seat on the plane is rude (recline_rude) and the explanatory variables we are considering are: people's height and how frequently they themselves decline the seat (recline_frequency). 
 
@@ -47,5 +49,71 @@ flying %>%
 ggplot()+
   geom_count(aes(x= height, y= recline_rude, color =recline_frequency))
 ```
+=======
+>>>>>>> 7b2c5d4a2daa48487ebacb235f08fba7e8ff1c2a
 ```
+
+## San Andreas Fault
+
+```{r}
+san_andreas %>% 
+  ggplot() +
+  geom_bar(aes(x = worry_bigone, fill = region))
+```
+
+```{r}
+san_andreas %>% 
+  ggplot() +
+  geom_jitter(aes(x = age, y = experience, color = prepared))
+```
+
+```{r}
+san_andreas %>% 
+  ggplot() +
+  geom_bar(aes(x = fam_san_andreas, fill = worry_bigone))
+```
+
+## Hate Crimes
+
+```{r}
+hc<-hate_crimes[-c(9),] #observation 9 (DC) produced to much interference when combined with other data states. Also doesn't count as a state, so thought it would be best to remove it's data from data wrangling 
+
+hc
+```
+```{r} 
+hc %>% 
+  ggplot(aes(x=median_house_inc, y=hate_crimes_per_100k_splc))+ #Southern Poverty Law Center
+  geom_text(aes(label=state_abbrev),
+            alpha=0.7,size=2.5) +
+  geom_smooth(se = FALSE, method = "lm")
+hc %>% 
+  ggplot(aes(x=gini_index, y=hate_crimes_per_100k_splc))+ #Southern Poverty Law Center
+  geom_text(aes(label=state_abbrev),
+            alpha=0.7,size=2.5) +
+  geom_smooth(se = FALSE, method = "lm")
+```
+```{r}
+hc %>% 
+  ggplot(aes(x = share_non_white, y = hate_crimes_per_100k_splc))+
+  geom_text(aes(label=state_abbrev),
+            alpha=0.7,size=2.5) +
+  geom_smooth(se = FALSE, method = "lm")
+hc %>% 
+  ggplot(aes(x = share_white_poverty, y = hate_crimes_per_100k_splc))+
+  geom_text(aes(label=state_abbrev),
+            alpha=0.7,size=2.5) +
+  geom_smooth(se = FALSE, method = "lm")
+hc %>% 
+  ggplot(aes(x = share_unemp_seas, y = hate_crimes_per_100k_splc))+
+  geom_text(aes(label=state_abbrev),
+            alpha=0.7,size=2.5) +
+  geom_smooth(se = FALSE, method = "lm")
+```
+
+
+
+
+
+
+
 
