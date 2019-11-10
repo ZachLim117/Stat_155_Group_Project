@@ -52,7 +52,7 @@ san_andreas %>%
 
 
 ```r
-hc<-hate_crimes[-c(9),] #observation 9 DC produced to much interference when combined with other data states. Also doesn't count as a state, so thought it would be best to remove it's data from data wrangling 
+hc<-hate_crimes[-c(9),] #observation 9 (DC) produced to much interference when combined with other data states. Also doesn't count as a state, so thought it would be best to remove it's data from data wrangling 
 
 hc
 ```
@@ -113,41 +113,6 @@ hc %>%
 
 ```r
 hc %>% 
-  ggplot(aes(x=median_house_inc, y=avg_hatecrimes_per_100k_fbi))+ #FBI
-  geom_text(aes(label=state_abbrev),
-            alpha=0.7,size=2.5) +
-  geom_smooth(se = FALSE, method = "lm")
-```
-
-```
-## Warning: Removed 1 rows containing non-finite values (stat_smooth).
-```
-
-```
-## Warning: Removed 1 rows containing missing values (geom_text).
-```
-
-![](data_explore_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
-
-```r
-hc %>% 
-  ggplot(aes(x=gini_index, y=avg_hatecrimes_per_100k_fbi))+ #FBI
-  geom_text(aes(label=state_abbrev),
-            alpha=0.7,size=2.5) +
-  geom_smooth(se = FALSE, method = "lm")
-```
-
-```
-## Warning: Removed 1 rows containing non-finite values (stat_smooth).
-
-## Warning: Removed 1 rows containing missing values (geom_text).
-```
-
-![](data_explore_files/figure-html/unnamed-chunk-7-2.png)<!-- -->
-
-
-```r
-hc %>% 
   ggplot(aes(x = share_non_white, y = hate_crimes_per_100k_splc))+
   geom_text(aes(label=state_abbrev),
             alpha=0.7,size=2.5) +
@@ -162,7 +127,7 @@ hc %>%
 ## Warning: Removed 4 rows containing missing values (geom_text).
 ```
 
-![](data_explore_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+![](data_explore_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
 ```r
 hc %>% 
@@ -178,7 +143,7 @@ hc %>%
 ## Warning: Removed 4 rows containing missing values (geom_text).
 ```
 
-![](data_explore_files/figure-html/unnamed-chunk-8-2.png)<!-- -->
+![](data_explore_files/figure-html/unnamed-chunk-7-2.png)<!-- -->
 
 ```r
 hc %>% 
@@ -194,7 +159,7 @@ hc %>%
 ## Warning: Removed 4 rows containing missing values (geom_text).
 ```
 
-![](data_explore_files/figure-html/unnamed-chunk-8-3.png)<!-- -->
+![](data_explore_files/figure-html/unnamed-chunk-7-3.png)<!-- -->
 
 
 
