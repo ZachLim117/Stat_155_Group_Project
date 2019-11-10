@@ -5,6 +5,9 @@ output:
     keep_md: yes
 ---
 
+#Stat Group Assignment 
+#By Zach Lin, Jason Tram, Mey So
+
 ```{r, message=FALSE, warning=FALSE}
 library(moderndive)
 library(skimr)
@@ -14,5 +17,35 @@ library(broom)
 library(tidyverse)
 library(alr4)
 library(ggridges)
+library(fivethirtyeight)
+```
+
+#Is it rude to recline your seat while on the airplane?
+
+In this investigation, we will be using the data from *flying* posted by the *fivethirtyeight* package. We are interested in what factor(s) affects people perception of rudeness on the plane. The response variable here is whether people think reclining seat on the plane is rude (recline_rude) and the explanatory variables we are considering are: people's height and how frequently they themselves decline the seat (recline_frequency). 
+
+(@) 
+```{r}
+data("flying")
+
+flying %>% 
+ggplot()+
+  geom_count(aes(x= height, y= recline_rude, color =height))+
+  theme_minimal()
+```
+
+```{r}
+flying %>% 
+ggplot()+
+  geom_count(aes(x= recline_frequency, y= recline_rude, color =recline_frequency))+
+  theme_minimal()
+```
+
+
+```{r}
+flying %>% 
+ggplot()+
+  geom_count(aes(x= height, y= recline_rude, color =recline_frequency))
+```
 ```
 
