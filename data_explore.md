@@ -5,6 +5,9 @@ output:
     keep_md: yes
 ---
 
+#Stat Group Assignment 
+#By Zach Lin, Jason Tram, Mey So
+
 
 ```r
 library(moderndive)
@@ -19,6 +22,58 @@ library(ggridges)
 library(fivethirtyeight)
 ```
 
+##Is it rude to recline your seat while on the airplane?
+
+In this investigation, we will be using the data from *flying* posted by the *fivethirtyeight* package. We are interested in what factor(s) affects people perception of rudeness on the plane. The response variable here is whether people think reclining seat on the plane is rude (recline_rude) and the explanatory variables we are considering are: people's height and how frequently they themselves decline the seat (recline_frequency). 
+
+(@) 
+
+```r
+data("flying")
+
+flying %>% 
+ggplot()+
+  geom_count(aes(x= height, y= recline_rude, color =height))+
+  theme_minimal()
+```
+
+```
+## Warning: Removed 1 rows containing missing values (geom_point).
+```
+
+![](data_explore_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+
+
+```r
+flying %>% 
+ggplot()+
+  geom_count(aes(x= recline_frequency, y= recline_rude, color =recline_frequency))+
+  theme_minimal()
+```
+
+```
+## Warning: Removed 1 rows containing missing values (geom_point).
+```
+
+![](data_explore_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+
+
+
+```r
+flying %>% 
+ggplot()+
+  geom_count(aes(x= height, y= recline_rude, color =recline_frequency))
+```
+
+```
+## Warning: Removed 1 rows containing missing values (geom_point).
+```
+
+![](data_explore_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+=======
+>>>>>>> 7b2c5d4a2daa48487ebacb235f08fba7e8ff1c2a
+```
+
 ## San Andreas Fault
 
 
@@ -28,7 +83,7 @@ san_andreas %>%
   geom_bar(aes(x = worry_bigone, fill = region))
 ```
 
-![](data_explore_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+![](data_explore_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
 
 
 ```r
@@ -37,7 +92,7 @@ san_andreas %>%
   geom_jitter(aes(x = age, y = experience, color = prepared))
 ```
 
-![](data_explore_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+![](data_explore_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
 
 
 ```r
@@ -46,7 +101,7 @@ san_andreas %>%
   geom_bar(aes(x = fam_san_andreas, fill = worry_bigone))
 ```
 
-![](data_explore_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](data_explore_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
 ## Hate Crimes
 
@@ -93,7 +148,7 @@ hc %>%
 ## Warning: Removed 4 rows containing missing values (geom_text).
 ```
 
-![](data_explore_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+![](data_explore_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
 
 ```r
 hc %>% 
@@ -109,7 +164,7 @@ hc %>%
 ## Warning: Removed 4 rows containing missing values (geom_text).
 ```
 
-![](data_explore_files/figure-html/unnamed-chunk-6-2.png)<!-- -->
+![](data_explore_files/figure-html/unnamed-chunk-9-2.png)<!-- -->
 
 ```r
 hc %>% 
@@ -127,7 +182,7 @@ hc %>%
 ## Warning: Removed 4 rows containing missing values (geom_text).
 ```
 
-![](data_explore_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+![](data_explore_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
 
 ```r
 hc %>% 
@@ -143,7 +198,7 @@ hc %>%
 ## Warning: Removed 4 rows containing missing values (geom_text).
 ```
 
-![](data_explore_files/figure-html/unnamed-chunk-7-2.png)<!-- -->
+![](data_explore_files/figure-html/unnamed-chunk-10-2.png)<!-- -->
 
 ```r
 hc %>% 
@@ -159,7 +214,7 @@ hc %>%
 ## Warning: Removed 4 rows containing missing values (geom_text).
 ```
 
-![](data_explore_files/figure-html/unnamed-chunk-7-3.png)<!-- -->
+![](data_explore_files/figure-html/unnamed-chunk-10-3.png)<!-- -->
 
 
 

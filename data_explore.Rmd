@@ -19,7 +19,6 @@ library(alr4)
 library(ggmosaic)
 library(ggridges)
 library(fivethirtyeight)
-HEAD
 ```
 
 ##Is it rude to recline your seat while on the airplane?
