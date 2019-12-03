@@ -1,0 +1,20 @@
+---
+title: "Final Project"
+author: "Zachary Lim"
+output:
+  html_document:
+---
+
+```{r, message=FALSE, warning=FALSE}
+library(moderndive)
+library(skimr)
+library(GGally)
+library(openintro)
+library(broom) 
+library(tidyverse)
+library(alr4)
+library(ggmosaic)
+library(ggridges)
+library(fivethirtyeight)
+```
+
