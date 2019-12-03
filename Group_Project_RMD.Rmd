@@ -18,3 +18,11 @@ library(ggridges)
 library(fivethirtyeight)
 ```
 
+
+Which Dataset should we do?
+
+Flying
+San Andreas Fault
+Hate Crimes
+
+
