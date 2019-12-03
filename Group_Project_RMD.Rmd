@@ -1,6 +1,6 @@
 ---
 title: "Final Project"
-author: "Zachary Lim"
+author: "Zachary Lim, Mey So, Jason Tram"
 output:
   html_document:
     df_print: paged
@@ -21,11 +21,20 @@ library(fivethirtyeight)
 
 ## Hate Crimes
 
+Hate crimes is defined as "any actions of prejudice based on race, religion, sexual orientation, disability, or ethnicity". In this investigation we will use the package [hate_crimes](https://fivethirtyeight.com/features/higher-rates-of-hate-crimes-are-tied-to-income-inequality/) from the *fivethirtyeight* library. The data looks at how hate crimes varies by states and how might different variables be accountable for this crimes level. 
+
+The data was collected from 2 institutions: The Southern Poverty Law Center (Nov 9-18, 2016) and the FBI (2010-2015). The motivation of this data collection was due to the high report of hate incidents following the 2016 election of President Donald Trump. The SPLC form collect their data based on medias accounts and people's self-reports, while the FBI collect their based on  reports from their agencies. 
+
+Research Question: To what extend does income inequality affect the level of hate crimes reported across the United State? 
+
+The objective of this research is to further understand the relationship between the reported hate crimes and the median household income of the state, to perform statistical analysis to confirm or denied our prediction, and to see whether this result is consistent across the two institutions. 
+
 ```{r}
 hc<-hate_crimes[-c(9),] #observation 9 (DC) produced to much interference when combined with other data states. Also doesn't count as a state, so thought it would be best to remove it's data from data wrangling 
 
 hc
 ```
+
 ```{r} 
 hc %>% 
   ggplot(aes(x=median_house_inc, y=hate_crimes_per_100k_splc))+ #Southern Poverty Law Center
@@ -40,9 +49,7 @@ hc %>%
 ```
 
 
-What to include: 
 
-(@) Describe the data and your research question. Where does it come from? How was it collected? What do you hope to learn?
 
 (@) 2-4 graphs with explanations about what the graphs show.
 
