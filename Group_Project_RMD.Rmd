@@ -19,12 +19,26 @@ library(ggridges)
 library(fivethirtyeight)
 ```
 
+## Hate Crimes
 
-Which Dataset should we do?
+```{r}
+hc<-hate_crimes[-c(9),] #observation 9 (DC) produced to much interference when combined with other data states. Also doesn't count as a state, so thought it would be best to remove it's data from data wrangling 
 
-Flying
-San Andreas Fault
-Hate Crimes
+hc
+```
+```{r} 
+hc %>% 
+  ggplot(aes(x=median_house_inc, y=hate_crimes_per_100k_splc))+ #Southern Poverty Law Center
+  geom_text(aes(label=state_abbrev),
+            alpha=0.7,size=2.5) +
+  geom_smooth(se = FALSE, method = "lm")
+hc %>% 
+  ggplot(aes(x=gini_index, y=hate_crimes_per_100k_splc))+ #Southern Poverty Law Center
+  geom_text(aes(label=state_abbrev),
+            alpha=0.7,size=2.5) +
+  geom_smooth(se = FALSE, method = "lm")
+```
+
 
 (@) Describe the data and your research question. Where does it come from? How was it collected? What do you hope to learn?
 
