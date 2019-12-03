@@ -30,7 +30,7 @@ Research Question: To what extend does income inequality affect the level of hat
 The objective of this research is to further understand the relationship between the reported hate crimes and the median household income of the state, to perform statistical analysis to confirm or denied our prediction, and to see whether this result is consistent across the two institutions. 
 
 ```{r}
-hc<-hate_crimes[-c(9),] #observation 9 (DC) produced to much interference when combined with other data states. Also doesn't count as a state, so thought it would be best to remove it's data from data wrangling 
+hc<-hate_crimes[-c(9),][-c(11),] #observation 9 (DC) produced to much interference when combined with other data states. Also doesn't count as a state, so thought it would be best to remove it's data from data wrangling. Observation 11 (Hawaii) does not inclued any data on Hate crimes Splc/FBI thus was removed from Data wrangling
 
 hc
 ```
@@ -42,12 +42,24 @@ hc %>%
             alpha=0.7,size=2.5) +
   geom_smooth(se = FALSE, method = "lm")
 hc %>% 
-  ggplot(aes(x=gini_index, y=hate_crimes_per_100k_splc))+ #Southern Poverty Law Center
+  ggplot(aes(x=median_house_inc, y=avg_hatecrimes_per_100k_fbi))+ #FBI 
   geom_text(aes(label=state_abbrev),
             alpha=0.7,size=2.5) +
   geom_smooth(se = FALSE, method = "lm")
 ```
 
+```{r} 
+hc %>% 
+  ggplot(aes(x=share_non_white, y=hate_crimes_per_100k_splc))+ #Southern Poverty Law Center
+  geom_text(aes(label=state_abbrev),
+            alpha=0.7,size=2.5) +
+  geom_smooth(se = FALSE, method = "lm")
+hc %>% 
+  ggplot(aes(x=share_non_white, y=avg_hatecrimes_per_100k_fbi))+ #FBI 
+  geom_text(aes(label=state_abbrev),
+            alpha=0.7,size=2.5) +
+  geom_smooth(se = FALSE, method = "lm")
+```
 
 
 
