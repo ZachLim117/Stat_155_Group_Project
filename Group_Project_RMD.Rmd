@@ -3,6 +3,7 @@ title: "Final Project"
 author: "Zachary Lim"
 output:
   html_document:
+    df_print: paged
 ---
 
 ```{r, message=FALSE, warning=FALSE}
