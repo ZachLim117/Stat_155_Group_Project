@@ -3,7 +3,6 @@ title: "Final Project"
 author: "Zachary Lim"
 output:
   html_document:
-    df_print: paged
 ---
 
 ```{r, message=FALSE, warning=FALSE}
@@ -20,11 +19,10 @@ library(fivethirtyeight)
 ```
 
 
-Which Dataset should we do?
-
-Flying
-San Andreas Fault
 Hate Crimes
+
+
+What to include: 
 
 (@) Describe the data and your research question. Where does it come from? How was it collected? What do you hope to learn?
 
@@ -35,3 +33,4 @@ Hate Crimes
 (@) Make some inferences, using either hypothesis testing or confidence intervals. What did you learn?
 
 (@) Discuss next steps.
+
