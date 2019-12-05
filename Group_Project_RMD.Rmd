@@ -100,6 +100,14 @@ whiteHate_200times %>%
             upper_ci = mean_est + 2*sd_est)
 ```
 
+```{r}
+whiteHate_200times %>% 
+  ggplot(aes(x = estimate)) +
+  geom_histogram(bins = 20) +
+  geom_vline(xintercept = -1.55638	, color = "red") +
+  geom_vline(xintercept = c(-3.906765, 0.7940049), color = "turquoise")
+```
+
 What to include: 
 
 (@) Describe the data and your research question. Where does it come from? How was it collected? What do you hope to learn?
