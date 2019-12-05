@@ -52,6 +52,11 @@ hc %>%
   geom_smooth(se = FALSE, method = "lm")
 ```
 
+```{r}
+lm.state.fbi <- lm(avg_hatecrimes_per_100k_fbi ~ state,
+                  data = hc)
+```
+
 What to include: 
 
 (@) Describe the data and your research question. Where does it come from? How was it collected? What do you hope to learn?
