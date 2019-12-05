@@ -21,6 +21,15 @@ library(ggridges)
 library(fivethirtyeight)
 ```
 
+<<<<<<< HEAD
+
+```{r}
+san_andreas %>% 
+  ggplot() +
+  geom_bar(aes(x = worry_bigone, fill = region))
+```
+
+=======
 ##Is it rude to recline your seat while on the airplane?
 
 In this investigation, we will be using the data from *flying* posted by the *fivethirtyeight* package. We are interested in what factor(s) affects people perception of rudeness on the plane. The response variable here is whether people think reclining seat on the plane is rude (recline_rude) and the explanatory variables we are considering are: people's height and how frequently they themselves decline the seat (recline_frequency). 
@@ -54,15 +63,21 @@ ggplot()+
 
 ## San Andreas Fault
 
+>>>>>>> 4e1ba15d0146ce6049ffdd7b24890ffd8dcca33e
 ```{r}
 san_andreas %>% 
   ggplot() +
-  geom_bar(aes(x = worry_bigone, fill = region))
+  geom_jitter(aes(x = age, y = experience, color = prepared))
 ```
 
 ```{r}
 san_andreas %>% 
   ggplot() +
+<<<<<<< HEAD
+  geom_bar(aes(x = fam_san_andreas, fill = worry_bigone))
+```
+
+=======
   geom_jitter(aes(x = age, y = experience, color = prepared))
 ```
 
@@ -115,4 +130,5 @@ hc %>%
 
 
 
+>>>>>>> 4e1ba15d0146ce6049ffdd7b24890ffd8dcca33e
 
