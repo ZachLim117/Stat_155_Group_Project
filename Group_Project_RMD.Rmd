@@ -60,7 +60,7 @@ tidy(lm.income.fbi)
 
 ```{r}
 lm.white.hate <- lm(avg_hatecrimes_per_100k_fbi ~ median_house_inc + share_non_white,
-data = hc)
+data = hc)   
 tidy(lm.white.hate)
 ```
 
