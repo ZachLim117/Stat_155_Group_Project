@@ -82,18 +82,21 @@ lm.income.fbi <- lm(avg_hatecrimes_per_100k_fbi ~ median_house_inc,
                   data = hc)
 tidy(lm.income.fbi)
 ```
+_This model explains the correlation between average hate crimes and median household income. The median_house_inc variable explains how much the predicted rates of hate crimes would increase based on increase in household income_
 
 ```{r}
 lm.white.hate <- lm(avg_hatecrimes_per_100k_fbi ~ median_house_inc + share_non_white,
 data = hc)   
 tidy(lm.white.hate)
 ```
+_This model adds an additional variable, the share of non whites, to the model before, but does not include interaction between household income and share of nonwhite people affecting rates of hate crimes. An interesting note is that there is a decrease in hate crimes modeled by increasing the share of non white people._
 
 ```{r}
 lm.interaction <- lm(avg_hatecrimes_per_100k_fbi ~ median_house_inc * share_non_white,
 data = hc)
 tidy(lm.interaction)
 ```
+_Here the interaction between median household income and share of non whites is added. An interesting note is that median household income by itself does not cause a super large increase in predicted hate crimes, and increasing non whites causes a significant decrease in predicted hate crimes. However, adding them together causes a small overall increase in predicted hate crimes._
 
 ```{r}
 get_regression_table(lm.white.hate) %>% 
@@ -121,6 +124,7 @@ whiteHate_200times %>%
             lower_ci = mean_est - 2*sd_est,
             upper_ci = mean_est + 2*sd_est)
 ```
+
 What to include: 
 
 (@) Describe the data and your research question. Where does it come from? How was it collected? What do you hope to learn?
