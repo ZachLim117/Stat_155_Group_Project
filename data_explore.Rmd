@@ -17,22 +17,23 @@ library(ggridges)
 library(fivethirtyeight)
 ```
 
-```{r}
-san_andreas
-```
+
 ```{r}
 san_andreas %>% 
   ggplot() +
   geom_bar(aes(x = worry_bigone, fill = region))
 ```
+
 ```{r}
 san_andreas %>% 
   ggplot() +
   geom_jitter(aes(x = age, y = experience, color = prepared))
 ```
+
 ```{r}
 san_andreas %>% 
   ggplot() +
   geom_bar(aes(x = fam_san_andreas, fill = worry_bigone))
 ```
+
 
