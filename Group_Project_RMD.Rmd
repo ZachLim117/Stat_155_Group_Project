@@ -41,12 +41,19 @@ hc %>%
   geom_text(aes(label=state_abbrev),
             alpha=0.7,size=2.5) +
   geom_smooth(se = FALSE, method = "lm")
+
+```
+This graph above shows the relationship between the median household income in 2016 and the hate crimes reports from SPLC. There seems to be a positive correlation between the median household income and the hate crimes reported. The higher median household income in the state, the more hate crimes reported. 
+
+```{r}
 hc %>% 
   ggplot(aes(x=median_house_inc, y=avg_hatecrimes_per_100k_fbi))+ #FBI 
   geom_text(aes(label=state_abbrev),
             alpha=0.7,size=2.5) +
   geom_smooth(se = FALSE, method = "lm")
 ```
+The graph above shows similar relationship between the median household income and the average hate crimes reported to the FBI. Although there is still a positive correlation between the median income and the average hate crimes, we do see that the average hate crimes reported for many states are not consistent with the level of hate crimes reported by the SPLC. 
+
 
 ```{r} 
 hc %>% 
@@ -54,6 +61,12 @@ hc %>%
   geom_text(aes(label=state_abbrev),
             alpha=0.7,size=2.5) +
   geom_smooth(se = FALSE, method = "lm")
+
+```
+The graph above shows the relationship between the share of state population that is not white and the hate crimes reported to the SPLC. This shows a negative correlation meaning the more non-white population there is in the state, the lower hate crimes reported. 
+
+
+```{r}
 hc %>% 
   ggplot(aes(x=share_non_white, y=avg_hatecrimes_per_100k_fbi))+ #FBI 
   geom_text(aes(label=state_abbrev),
@@ -61,9 +74,8 @@ hc %>%
   geom_smooth(se = FALSE, method = "lm")
 ```
 
+The graph above shows similar relationship from the previous graph, showing the relationship between the share of the state population that are not white and the average hate crimes reported to the FBI. The result is fairly consistent with the data from the SPLC and it shows that the more non-white population in the state correlate with the lower average hate crimes reported. 
 
-
-(@) 2-4 graphs with explanations about what the graphs show.
 
 (@) At least 2 models. Explain why you chose to fit these models and interpret the coefficients of the model. What do they mean in the context of your research question? 
 
