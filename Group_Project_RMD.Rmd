@@ -64,6 +64,18 @@ data = hc)
 tidy(lm.white.hate)
 ```
 
+```{r}
+lm.interaction <- lm(avg_hatecrimes_per_100k_fbi ~ median_house_inc * share_non_white,
+data = hc)
+tidy(lm.interaction)
+```
+
+```{r}
+get_regression_table(lm.white.hate) %>% 
+  filter(term == "share_non_white") %>% 
+  select(term, estimate, lower_ci, upper_ci)
+```
+
 What to include: 
 
 (@) Describe the data and your research question. Where does it come from? How was it collected? What do you hope to learn?
