@@ -29,6 +29,8 @@ Research Question: To what extend does income inequality affect the level of hat
 
 The objective of this research is to further understand the relationship between the reported hate crimes and the median household income of the state, to perform statistical analysis to confirm or denied our prediction, and to see whether this result is consistent across the two institutions. 
 
+## Look into data
+
 ```{r}
 hc<-hate_crimes[-c(9),][-c(11),] #observation 9 (DC) produced to much interference when combined with other data states. Also doesn't count as a state, so thought it would be best to remove it's data from data wrangling. Observation 11 (Hawaii) does not inclued any data on Hate crimes Splc/FBI thus was removed from Data wrangling
 
@@ -74,15 +76,16 @@ hc %>%
   geom_smooth(se = FALSE, method = "lm")
 ```
 
-<<<<<<< HEAD
 The graph above shows similar relationship from the previous graph, showing the relationship between the share of the state population that are not white and the average hate crimes reported to the FBI. The result is fairly consistent with the data from the SPLC and it shows that the more non-white population in the state correlate with the lower average hate crimes reported. 
-=======
+
+##Fiited Models
+
 ```{r}
 lm.income.fbi <- lm(avg_hatecrimes_per_100k_fbi ~ median_house_inc,
                   data = hc)
 tidy(lm.income.fbi)
 ```
-_This model explains the correlation between average hate crimes and median household income. The median_house_inc variable explains how much the predicted rates of hate crimes would increase based on increase in household income_
+This model explains the correlation between average hate crimes and median household income. The median_house_inc variable explains how much the predicted rates of hate crimes would increase based on increase in household income. 
 
 ```{r}
 lm.white.hate <- lm(avg_hatecrimes_per_100k_fbi ~ median_house_inc + share_non_white,
@@ -97,6 +100,9 @@ data = hc)
 tidy(lm.interaction)
 ```
 _Here the interaction between median household income and share of non whites is added. An interesting note is that median household income by itself does not cause a super large increase in predicted hate crimes, and increasing non whites causes a significant decrease in predicted hate crimes. However, adding them together causes a small overall increase in predicted hate crimes._
+
+
+## Hypothesis testing
 
 ```{r}
 get_regression_table(lm.white.hate) %>% 
@@ -125,11 +131,9 @@ whiteHate_200times %>%
             upper_ci = mean_est + 2*sd_est)
 ```
 
+
+
 What to include: 
-
-(@) Describe the data and your research question. Where does it come from? How was it collected? What do you hope to learn?
->>>>>>> 86ef32085936f369fbbce8b329bbf06321d41079
-
 
 (@) At least 2 models. Explain why you chose to fit these models and interpret the coefficients of the model. What do they mean in the context of your research question? 
 
