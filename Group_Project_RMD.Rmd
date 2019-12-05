@@ -25,7 +25,9 @@ Hate crimes is defined as "any actions of prejudice based on race, religion, sex
 
 The data was collected from 2 institutions: The Southern Poverty Law Center (Nov 9-18, 2016) and the FBI (2010-2015). The motivation of this data collection was due to the high report of hate incidents following the 2016 election of President Donald Trump. The SPLC form collect their data based on medias accounts and people's self-reports, while the FBI collect their based on  reports from their agencies. 
 
-Research Question: To what extend does income inequality affect the level of hate crimes reported across the United State? 
+##Research Question: 
+
+To what extend does income inequality affect the level of hate crimes reported across the United State? 
 
 The objective of this research is to further understand the relationship between the reported hate crimes and the median household income of the state, to perform statistical analysis to confirm or denied our prediction, and to see whether this result is consistent across the two institutions. 
 
@@ -45,7 +47,7 @@ hc %>%
   geom_smooth(se = FALSE, method = "lm")
 
 ```
-This graph above shows the relationship between the median household income in 2016 and the hate crimes reports from SPLC. There seems to be a positive correlation between the median household income and the hate crimes reported. The higher median household income in the state, the more hate crimes reported. 
+_This graph above shows the relationship between the median household income in 2016 and the hate crimes reports from SPLC. There seems to be a positive correlation between the median household income and the hate crimes reported. The higher median household income in the state, the more hate crimes reported._ 
 
 ```{r}
 hc %>% 
@@ -54,7 +56,7 @@ hc %>%
             alpha=0.7,size=2.5) +
   geom_smooth(se = FALSE, method = "lm")
 ```
-The graph above shows similar relationship between the median household income and the average hate crimes reported to the FBI. Although there is still a positive correlation between the median income and the average hate crimes, we do see that the average hate crimes reported for many states are not consistent with the level of hate crimes reported by the SPLC. 
+_The graph above shows similar relationship between the median household income and the average hate crimes reported to the FBI. Although there is still a positive correlation between the median income and the average hate crimes, we do see that the average hate crimes reported for many states are not consistent with the level of hate crimes reported by the SPLC._ 
 
 
 ```{r} 
@@ -65,7 +67,7 @@ hc %>%
   geom_smooth(se = FALSE, method = "lm")
 
 ```
-The graph above shows the relationship between the share of state population that is not white and the hate crimes reported to the SPLC. This shows a negative correlation meaning the more non-white population there is in the state, the lower hate crimes reported. 
+_The graph above shows the relationship between the share of state population that is not white and the hate crimes reported to the SPLC. This shows a negative correlation meaning the more non-white population there is in the state, the lower hate crimes reported._ 
 
 
 ```{r}
@@ -76,7 +78,7 @@ hc %>%
   geom_smooth(se = FALSE, method = "lm")
 ```
 
-The graph above shows similar relationship from the previous graph, showing the relationship between the share of the state population that are not white and the average hate crimes reported to the FBI. The result is fairly consistent with the data from the SPLC and it shows that the more non-white population in the state correlate with the lower average hate crimes reported. 
+_The graph above shows similar relationship from the previous graph, showing the relationship between the share of the state population that are not white and the average hate crimes reported to the FBI. The result is fairly consistent with the data from the SPLC and it shows that the more non-white population in the state correlate with the lower average hate crimes reported._ 
 
 ##Fiited Models
 
@@ -85,14 +87,15 @@ lm.income.fbi <- lm(avg_hatecrimes_per_100k_fbi ~ median_house_inc,
                   data = hc)
 tidy(lm.income.fbi)
 ```
-This model explains the correlation between average hate crimes and median household income. The median_house_inc variable explains how much the predicted rates of hate crimes would increase based on increase in household income. 
+_This model explains the correlation between average hate crimes and median household income.The intercept coefficient is the mean median household income. The median_house_inc variable explains how much the predicted rates of hate crimes would increase based on increase in household income._ 
 
 ```{r}
 lm.white.hate <- lm(avg_hatecrimes_per_100k_fbi ~ median_house_inc + share_non_white,
 data = hc)   
 tidy(lm.white.hate)
 ```
-_This model adds an additional variable, the share of non whites, to the model before, but does not include interaction between household income and share of nonwhite people affecting rates of hate crimes. median_house_inc explains the predicted increase in hatecrimes along with increase in household income. share_non_white predicts the decrease in hate crimes based in increasing levels of non white residents in an area. An interesting note is that there is a decrease in hate crimes modeled by increasing the share of non white people._
+
+_This model adds an additional variable, the share of non whites, to the model before, but does not include interaction between household income and share of nonwhite people affecting rates of hate crimes. median_house_inc coefficient explains the predicted increase in hatecrimes along with increase in household income. share_non_white coefficient predicts the decrease in hate crimes based in increasing levels of non white residents in an area. An interesting note is that there is a decrease in hate crimes modeled by increasing the share of non white people._
 
 ```{r}
 lm.interaction <- lm(avg_hatecrimes_per_100k_fbi ~ median_house_inc * share_non_white,
@@ -131,8 +134,7 @@ whiteHate_200times %>%
             upper_ci = mean_est + 2*sd_est)
 ```
 
-<<<<<<< HEAD
-=======
+
 ```{r}
 whiteHate_200times %>% 
   ggplot(aes(x = estimate)) +
@@ -141,15 +143,13 @@ whiteHate_200times %>%
   geom_vline(xintercept = c(-3.906765, 0.7940049), color = "turquoise")
 ```
 
-What to include: 
->>>>>>> e7960919fb1dede97d1c44450ca739baa65b848e
 
 
-What to include: 
 
-(@) At least 2 models. Explain why you chose to fit these models and interpret the coefficients of the model. What do they mean in the context of your research question? 
+
 
 (@) Make some inferences, using either hypothesis testing or confidence intervals. What did you learn?
 
 (@) Discuss next steps.
+
 
