@@ -1,0 +1,66 @@
+---
+title: "Final Project"
+author: "Zachary Lim"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r, message=FALSE, warning=FALSE}
+library(moderndive)
+library(skimr)
+library(GGally)
+library(openintro)
+library(broom) 
+library(tidyverse)
+library(alr4)
+library(ggmosaic)
+library(ggridges)
+library(fivethirtyeight)
+```
+
+## Hate Crimes
+
+```{r}
+hc<-hate_crimes[-c(9),][-c(11),] #observation 9 (DC) produced to much interference when combined with other data states. Also doesn't count as a state, so thought it would be best to remove it's data from data wrangling. Observation 11 (Hawaii) does not inclued any data on Hate crimes Splc/FBI thus was removed from Data wrangling
+
+hc
+```
+```{r} 
+hc %>% 
+  ggplot(aes(x=median_house_inc, y=hate_crimes_per_100k_splc))+ #Southern Poverty Law Center
+  geom_text(aes(label=state_abbrev),
+            alpha=0.7,size=2.5) +
+  geom_smooth(se = FALSE, method = "lm")
+hc %>% 
+  ggplot(aes(x=median_house_inc, y=avg_hatecrimes_per_100k_fbi))+ #FBI 
+  geom_text(aes(label=state_abbrev),
+            alpha=0.7,size=2.5) +
+  geom_smooth(se = FALSE, method = "lm")
+```
+
+```{r} 
+hc %>% 
+  ggplot(aes(x=share_non_white, y=hate_crimes_per_100k_splc))+ #Southern Poverty Law Center
+  geom_text(aes(label=state_abbrev),
+            alpha=0.7,size=2.5) +
+  geom_smooth(se = FALSE, method = "lm")
+hc %>% 
+  ggplot(aes(x=share_non_white, y=avg_hatecrimes_per_100k_fbi))+ #FBI 
+  geom_text(aes(label=state_abbrev),
+            alpha=0.7,size=2.5) +
+  geom_smooth(se = FALSE, method = "lm")
+```
+
+What to include: 
+
+(@) Describe the data and your research question. Where does it come from? How was it collected? What do you hope to learn?
+
+(@) 2-4 graphs with explanations about what the graphs show.
+
+(@) At least 2 models. Explain why you chose to fit these models and interpret the coefficients of the model. What do they mean in the context of your research question? 
+
+(@) Make some inferences, using either hypothesis testing or confidence intervals. What did you learn?
+
+(@) Discuss next steps.
+
