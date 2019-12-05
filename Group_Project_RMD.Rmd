@@ -52,6 +52,18 @@ hc %>%
   geom_smooth(se = FALSE, method = "lm")
 ```
 
+```{r}
+lm.income.fbi <- lm(avg_hatecrimes_per_100k_fbi ~ median_house_inc,
+                  data = hc)
+tidy(lm.income.fbi)
+```
+
+```{r}
+lm.white.hate <- lm(avg_hatecrimes_per_100k_fbi ~ median_house_inc + share_non_white,
+data = hc)
+tidy(lm.white.hate)
+```
+
 What to include: 
 
 (@) Describe the data and your research question. Where does it come from? How was it collected? What do you hope to learn?
