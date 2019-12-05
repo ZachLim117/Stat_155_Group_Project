@@ -76,6 +76,26 @@ get_regression_table(lm.white.hate) %>%
   select(term, estimate, lower_ci, upper_ci)
 ```
 
+
+```{r}
+set.seed(111)
+
+whiteHate_200times <- 
+  rep_sample_n(hc, 
+               size = 51, 
+               reps = 200, 
+               replace = TRUE) %>% 
+  group_by(replicate) %>%     
+  do(lm(avg_hatecrimes_per_100k_fbi ~ median_house_inc + share_non_white, data=.) %>% tidy()) %>% 
+  filter(term == "share_non_white")  
+
+whiteHate_200times %>% 
+  ungroup() %>% 
+  summarize(mean_est = mean(estimate),
+            sd_est = sd(estimate),
+            lower_ci = mean_est - 2*sd_est,
+            upper_ci = mean_est + 2*sd_est)
+```
 What to include: 
 
 (@) Describe the data and your research question. Where does it come from? How was it collected? What do you hope to learn?
