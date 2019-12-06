@@ -1,6 +1,6 @@
 ---
 title: "Final Project"
-author: "Zachary Lim"
+author: "Zachary Lim, Mey So, Jason Tran"
 output:
   html_document:
     df_print: paged
