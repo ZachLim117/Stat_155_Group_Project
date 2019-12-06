@@ -110,15 +110,4 @@ whiteHate_200times %>%
 _The reasoning behind modeling the confidence interval for the specific value of share_non_white would be the usefuness of this data in further study. We learned that there is a much larger range in the effect of non white population on rates of hate crimes than previously thought. In further study where we might include data on states and voting in the 2016 election, knowing how much the effect that having non white residents in an area can give us more information on where we can pin down the specific effects on data that the different variables may bring._
 
 _Further research may be centered on the effect that other factors, mainly state and candidate voted for, have on the number of hate crimes. Having a confidence interval for number of non white people in an area is meant to help facilitate this possible future research_
-What to include: 
-
-(@) Describe the data and your research question. Where does it come from? How was it collected? What do you hope to learn?
-
-(@) 2-4 graphs with explanations about what the graphs show.
-
-(@) At least 2 models. Explain why you chose to fit these models and interpret the coefficients of the model. What do they mean in the context of your research question? 
-
-(@) Make some inferences, using either hypothesis testing or confidence intervals. What did you learn?
-
-(@) Discuss next steps.
 
