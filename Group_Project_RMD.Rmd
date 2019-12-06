@@ -14,19 +14,17 @@ library(openintro)
 library(broom) 
 library(tidyverse)
 library(alr4)
-library(ggmosaic)
-library(ggridges)
 library(fivethirtyeight)
 ```
 
 ## Hate Crimes
 
-```{r}
+```{r,echo=FALSE,warning=FALSE}
 hc<-hate_crimes[-c(9),][-c(11),] #observation 9 (DC) produced to much interference when combined with other data states. Also doesn't count as a state, so thought it would be best to remove it's data from data wrangling. Observation 11 (Hawaii) does not inclued any data on Hate crimes Splc/FBI thus was removed from Data wrangling
 
 hc
 ```
-```{r} 
+```{r,echo=FALSE,warning=FALSE} 
 hc %>% 
   ggplot(aes(x=median_house_inc, y=hate_crimes_per_100k_splc))+ #Southern Poverty Law Center
   geom_text(aes(label=state_abbrev),
@@ -39,7 +37,7 @@ hc %>%
   geom_smooth(se = FALSE, method = "lm")
 ```
 
-```{r} 
+```{r,echo=FALSE,warning=FALSE} 
 hc %>% 
   ggplot(aes(x=share_non_white, y=hate_crimes_per_100k_splc))+ #Southern Poverty Law Center
   geom_text(aes(label=state_abbrev),
@@ -52,35 +50,38 @@ hc %>%
   geom_smooth(se = FALSE, method = "lm")
 ```
 
-```{r}
+```{r,echo=FALSE,warning=FALSE}
 lm.income.fbi <- lm(avg_hatecrimes_per_100k_fbi ~ median_house_inc,
                   data = hc)
 tidy(lm.income.fbi)
 ```
+
 _This model explains the correlation between average hate crimes and median household income. The median_house_inc variable explains how much the predicted rates of hate crimes would increase based on increase in household income_
 
-```{r}
+```{r,echo=FALSE,warning=FALSE}
 lm.white.hate <- lm(avg_hatecrimes_per_100k_fbi ~ median_house_inc + share_non_white,
 data = hc)   
 tidy(lm.white.hate)
 ```
+
 _This model adds an additional variable, the share of non whites, to the model before, but does not include interaction between household income and share of nonwhite people affecting rates of hate crimes. median_house_inc explains the predicted increase in hatecrimes along with increase in household income. share_non_white predicts the decrease in hate crimes based in increasing levels of non white residents in an area. An interesting note is that there is a decrease in hate crimes modeled by increasing the share of non white people._
 
-```{r}
+```{r,echo=FALSE,warning=FALSE}
 lm.interaction <- lm(avg_hatecrimes_per_100k_fbi ~ median_house_inc * share_non_white,
 data = hc)
 tidy(lm.interaction)
 ```
+
 _Here the interaction between median household income and share of non whites is added. ON top of coefficients from the previous model, the median_house_inc:share_non_white now accounts for the interaction between household income and non white residents in an area. An interesting note is that median household income by itself does not cause a super large increase in predicted hate crimes, and increasing non whites causes a significant decrease in predicted hate crimes. However, adding them together causes a small overall increase in predicted hate crimes._
 
-```{r}
+```{r,echo=FALSE,warning=FALSE}
 get_regression_table(lm.white.hate) %>% 
   filter(term == "share_non_white") %>% 
   select(term, estimate, lower_ci, upper_ci)
 ```
 
 
-```{r}
+```{r,echo=FALSE,warning=FALSE}
 set.seed(111)
 
 whiteHate_200times <- 
@@ -100,13 +101,14 @@ whiteHate_200times %>%
             upper_ci = mean_est + 2*sd_est)
 ```
 
-```{r}
+```{r,echo=FALSE,warning=FALSE}
 whiteHate_200times %>% 
   ggplot(aes(x = estimate)) +
   geom_histogram(bins = 20) +
   geom_vline(xintercept = -1.55638	, color = "red") +
   geom_vline(xintercept = c(-3.906765, 0.7940049), color = "turquoise")
 ```
+
 _The reasoning behind modeling the confidence interval for the specific value of share_non_white would be the usefuness of this data in further study. We learned that there is a much larger range in the effect of non white population on rates of hate crimes than previously thought. In further study where we might include data on states and voting in the 2016 election, knowing how much the effect that having non white residents in an area can give us more information on where we can pin down the specific effects on data that the different variables may bring._
 
 _Further research may be centered on the effect that other factors, mainly state and candidate voted for, have on the number of hate crimes. Having a confidence interval for number of non white people in an area is meant to help facilitate this possible future research_
