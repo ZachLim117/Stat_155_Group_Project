@@ -27,7 +27,7 @@ library(fivethirtyeight)
 
 *    In this investigation we will use the package [hate_crimes](https://fivethirtyeight.com/features/higher-rates-of-hate-crimes-are-tied-to-income-inequality/) from the *fivethirtyeight* library. The motivation of this data collection was due to the high report of hate incidents following the 2016 election of President Donald Trump.
 
-*    Looks at how hate crimes varies by states and how might different variables be accountable for this crimes level. 
+*    Looks at how hate crimes varies by states and how might different variables, specifically the median household income and share of population that is non-white, be accountable for this crimes level. 
 
 *    Collected from 2 institutions: The Southern Poverty Law Center (Nov 9-18, 2016) and the FBI (2010-2015). 
 
