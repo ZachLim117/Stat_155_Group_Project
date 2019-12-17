@@ -99,8 +99,6 @@ lm.income.fbi <- lm(avg_hatecrimes_per_100k_fbi ~ median_house_inc,
 tidy(lm.income.fbi)
 ```
 
-_This model explains the correlation between average hate crimes and median household income.The intercept coefficient is the mean median household income. The median_house_inc variable explains how much the predicted rates of hate crimes would increase based on increase in household income._ 
-
 *    Firstly, we made a model that explains the correlation between average hate crimes and median household income. The model includes a coefficient that explains how much the rates of hate crimes would possibly increase based on increase in household income.
 *    Below is the model equation with $$\hat{\beta}_0$$ being the intercept and $$\hat{\beta}_I x_I$$ being the effect income has in increasing instances of hate crime according to this model. 
 
@@ -113,11 +111,6 @@ lm.white.hate <- lm(avg_hatecrimes_per_100k_fbi ~ median_house_inc + share_non_w
 data = hc)   
 tidy(lm.white.hate)
 ```
-
-_This model adds an additional variable, the share of non whites, to the model before, but does not include interaction between household income and share of nonwhite people affecting rates of hate crimes. median_house_inc coefficient explains the predicted increase in hatecrimes along with increase in household income. share_non_white coefficient predicts the decrease in hate crimes based in increasing levels of non white residents in an area. An interesting note is that there is a decrease in hate crimes modeled by increasing the share of non white people._
-
-
-_The second model adds an additional variable, the share of non whites, to the model before, but does not include interaction between household income and share of nonwhite people affecting rates of hate crimes. median_house_inc explains the predicted increase in hatecrimes along with increase in household income. share_non_white predicts the decrease in hate crimes based in increasing levels of non white residents in an area. An interesting note is that there is a decrease in hate crimes modeled by increasing the share of non white people._
 
 
 The second model adds an additional variable, the share of non whites, to the model before, but does not include interaction between household income and share of nonwhite people affecting rates of hate crimes. 
@@ -181,7 +174,6 @@ whiteHate_200times %>%
   geom_vline(xintercept = c(-3.906765, 0.7940049), color = "turquoise")
 ```
 
-_Seeing the wide range in confidence intervals in our actual data set, we decided to fit a confidence interval based on 200 bootstrapped samples from the original data set. The reasoning behind modeling the confidence interval for the specific value of share_non_white would be the usefuness of this data in further study. We learned that there is a much larger range in the effect of non white population on rates of hate crimes than previously thought. In further study where we might include data on states and voting in the 2016 election, knowing how much the effect that having non white residents in an area can give us more information on where we can pin down the specific effects on data that the different variables may bring._
 
 *    Seeing the wide range in confidence intervals in our actual data set, we decided to fit a confidence interval based on 200 bootstrapped samples from the original data set. 
 
