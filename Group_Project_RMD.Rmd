@@ -20,10 +20,12 @@ library(fivethirtyeight)
 ## Hate Crimes
 
 ```{r,echo=FALSE,warning=FALSE}
-hc<-hate_crimes[-c(9),][-c(11),] #observation 9 (DC) produced to much interference when combined with other data states. Also doesn't count as a state, so thought it would be best to remove it's data from data wrangling. Observation 11 (Hawaii) does not inclued any data on Hate crimes Splc/FBI thus was removed from Data wrangling
-
+hc<-hate_crimes[-c(9),][-c(11),]
 hc
 ```
+Observation 9 (DC) produced too much interference as hate crime values were the highest values out of all other states. (Also doesn't count as a state, so thought it would be best to remove it's data from data wrangling.)
+Observation 11 (Hawaii) does not inclued any data on Hate crimes Splc/FBI thus was removed from Data wrangling
+
 ```{r,echo=FALSE,warning=FALSE} 
 hc %>% 
   ggplot(aes(x=median_house_inc, y=hate_crimes_per_100k_splc))+ #Southern Poverty Law Center
