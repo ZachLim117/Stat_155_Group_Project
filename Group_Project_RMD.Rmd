@@ -6,7 +6,7 @@ output:
     df_print: paged
 ---
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE,,echo=FALSE}
 library(moderndive)
 library(skimr)
 library(GGally)
@@ -57,7 +57,7 @@ hc %>%
 
 _This graph above shows the relationship between the median household income in 2016 and the hate crimes reports from SPLC. There seems to be a positive correlation between the median household income and the hate crimes reported. The higher median household income in the state, the more hate crimes reported._ 
 
-```{r}
+```{r,echo=FALSE,warning=FALSE}
 hc %>% 
   ggplot(aes(x=median_house_inc, y=avg_hatecrimes_per_100k_fbi))+ #FBI 
   geom_text(aes(label=state_abbrev),
@@ -80,7 +80,7 @@ hc %>%
 _The graph above shows the relationship between the share of state population that is not white and the hate crimes reported to the SPLC. This shows a negative correlation meaning the more non-white population there is in the state, the lower hate crimes reported._ 
 
 
-```{r}
+```{r,echo=FALSE,warning=FALSE}
 hc %>% 
   ggplot(aes(x=share_non_white, y=avg_hatecrimes_per_100k_fbi))+ #FBI 
   geom_text(aes(label=state_abbrev),
