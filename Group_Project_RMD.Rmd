@@ -1,5 +1,5 @@
 ---
-title: "Final Project"
+title: "Hate Crime Analysis"
 author: "Zachary Lim, Mey So, Jason Tram"
 output:
   html_document:
@@ -29,7 +29,7 @@ library(fivethirtyeight)
 
 *    The SPLC collect their data based on medias accounts and people's self-reports, while the FBI collect their based on  reports from their agencies. 
 
-##Research Question: 
+## Research Question: 
 
 To what extend does income inequality affect the level of hate crimes reported across the United State? 
 
@@ -54,6 +54,7 @@ hc %>%
   geom_smooth(se = FALSE, method = "lm")
 
 ```
+
 _This graph above shows the relationship between the median household income in 2016 and the hate crimes reports from SPLC. There seems to be a positive correlation between the median household income and the hate crimes reported. The higher median household income in the state, the more hate crimes reported._ 
 
 ```{r}
@@ -63,6 +64,7 @@ hc %>%
             alpha=0.7,size=2.5) +
   geom_smooth(se = FALSE, method = "lm")
 ```
+
 _The graph above shows similar relationship between the median household income and the average hate crimes reported to the FBI. Although there is still a positive correlation between the median income and the average hate crimes, we do see that the average hate crimes reported for many states are not consistent with the level of hate crimes reported by the SPLC._ 
 
 
@@ -74,6 +76,7 @@ hc %>%
   geom_smooth(se = FALSE, method = "lm")
 
 ```
+
 _The graph above shows the relationship between the share of state population that is not white and the hate crimes reported to the SPLC. This shows a negative correlation meaning the more non-white population there is in the state, the lower hate crimes reported._ 
 
 
@@ -95,6 +98,7 @@ lm.income.fbi <- lm(avg_hatecrimes_per_100k_fbi ~ median_house_inc,
                   data = hc)
 tidy(lm.income.fbi)
 ```
+
 _This model explains the correlation between average hate crimes and median household income.The intercept coefficient is the mean median household income. The median_house_inc variable explains how much the predicted rates of hate crimes would increase based on increase in household income._ 
 
 *    Firstly, we made a model that explains the correlation between average hate crimes and median household income. The model includes a coefficient that explains how much the rates of hate crimes would possibly increase based on increase in household income.
@@ -176,7 +180,6 @@ whiteHate_200times %>%
   geom_vline(xintercept = -1.55638	, color = "red") +
   geom_vline(xintercept = c(-3.906765, 0.7940049), color = "turquoise")
 ```
-
 
 _Seeing the wide range in confidence intervals in our actual data set, we decided to fit a confidence interval based on 200 bootstrapped samples from the original data set. The reasoning behind modeling the confidence interval for the specific value of share_non_white would be the usefuness of this data in further study. We learned that there is a much larger range in the effect of non white population on rates of hate crimes than previously thought. In further study where we might include data on states and voting in the 2016 election, knowing how much the effect that having non white residents in an area can give us more information on where we can pin down the specific effects on data that the different variables may bring._
 
