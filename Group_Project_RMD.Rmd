@@ -1,10 +1,6 @@
 ---
 title: "Final Project"
-<<<<<<< HEAD
 author: "Zachary Lim, Mey So, Jason Tram"
-=======
-author: "Zachary Lim, Mey So, Jason Tran"
->>>>>>> adfe186447ff523baedcd7d90d2bc9740cc0cfba
 output:
   html_document:
     df_print: paged
