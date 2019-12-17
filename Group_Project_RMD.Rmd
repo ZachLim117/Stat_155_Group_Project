@@ -42,10 +42,13 @@ The objective of this research is to further understand the relationship between
 ## Look into data
 
 ```{r,echo=FALSE,warning=FALSE}
-hc<-hate_crimes[-c(9),][-c(11),] #observation 9 (DC) produced to much interference when combined with other data states. Also doesn't count as a state, so thought it would be best to remove it's data from data wrangling. Observation 11 (Hawaii) does not inclued any data on Hate crimes Splc/FBI thus was removed from Data wrangling
-
+hc<-hate_crimes[-c(9),][-c(11),]
 hc
 ```
+
+Observation 9 (DC) produced too much interference as hate crime values were the highest values out of all other states. (Also doesn't count as a state, so thought it would be best to remove it's data from data wrangling.)
+
+Observation 11 (Hawaii) does not inclued any data on Hate crimes Splc/FBI thus was removed from Data wrangling. Hate crimes are recorded voluntarily, thus none were recorded for Hawaii.
 
 ```{r,echo=FALSE,warning=FALSE} 
 hc %>% 
@@ -98,7 +101,8 @@ tidy(lm.income.fbi)
 ```
 _This model explains the correlation between average hate crimes and median household income.The intercept coefficient is the mean median household income. The median_house_inc variable explains how much the predicted rates of hate crimes would increase based on increase in household income._ 
 
-Firstly, we made a model that explains the correlation between average hate crimes and median household income. The model includes a coefficient that explains how much the rates of hate crimes would possibly increase based on increase in household income. Below is the model equation with $$\hat{\beta}_0$$ being the intercept and $$\hat{\beta}_I x_I$$ being the effect income has in increasing instances of hate crime according to this model. 
+*    Firstly, we made a model that explains the correlation between average hate crimes and median household income. The model includes a coefficient that explains how much the rates of hate crimes would possibly increase based on increase in household income.
+*    Below is the model equation with $$\hat{\beta}_0$$ being the intercept and $$\hat{\beta}_I x_I$$ being the effect income has in increasing instances of hate crime according to this model. 
 
 $$
 \hat{y} = \hat{\beta}_0 + \hat{\beta}_I x_I 
@@ -115,6 +119,13 @@ _This model adds an additional variable, the share of non whites, to the model b
 
 _The second model adds an additional variable, the share of non whites, to the model before, but does not include interaction between household income and share of nonwhite people affecting rates of hate crimes. median_house_inc explains the predicted increase in hatecrimes along with increase in household income. share_non_white predicts the decrease in hate crimes based in increasing levels of non white residents in an area. An interesting note is that there is a decrease in hate crimes modeled by increasing the share of non white people._
 
+
+The second model adds an additional variable, the share of non whites, to the model before, but does not include interaction between household income and share of nonwhite people affecting rates of hate crimes. 
+*    median_house_inc explains the predicted increase in hatecrimes along with increase in household income.
+*    share_non_white predicts the decrease in hate crimes based in increasing levels of non white residents in an area. 
+An interesting note is that there is a modeled decrease in hate crimes modeled by increasing the share of non white people.
+
+
 ```{r,echo=FALSE,warning=FALSE}
 lm.interaction <- lm(avg_hatecrimes_per_100k_fbi ~ median_house_inc * share_non_white,
 data = hc)
@@ -127,12 +138,18 @@ tidy(lm.interaction)
 _We then accounted for the interaction between median household income and share of non whites. On top of coefficients from the previous model, a new coefficient, median_house_inc:share_non_white, now accounts for the interaction between household income and non white residents in an area. An interesting note is that median household income by itself does not cause a large increase in predicted hate crimes, and increasing non whites causes a significant decrease in predicted hate crimes. However, adding their interaction causes a small overall increase in predicted hate crimes._
 
 
+We then accounted for the interaction between median household income and share of non whites. 
+*    A new coefficient, median_house_inc:share_non_white, now accounts for the interaction between household income and non white residents in an area. 
+*    An interesting note is that median household income by itself does not cause a large increase in predicted hate crimes, and increasing non whites causes a significant decrease in predicted hate crimes. However, adding their interaction causes a small overall increase in predicted hate crimes.
+
+
 ```{r,echo=FALSE,warning=FALSE}
 get_regression_table(lm.white.hate) %>% 
   filter(term == "share_non_white") %>% 
   select(term, estimate, lower_ci, upper_ci)
 ```
-_Above, we calculated the confidence interval for the predicted effect on rates of hate crimes by the share of non white individuals in an area. An interesting thing to observe is that there is a decently wide range of possible effect of this coefficient on predicted rates of hate crimes, which is the subject of further investigation later._
+Above, we calculated the confidence interval for the predicted effect on rates of hate crimes by the share of non white individuals in an area. 
+*    An interesting thing to observe is that there is a decently wide range of possible effect of this coefficient on predicted rates of hate crimes, which is the subject of further investigation later.
 
 ```{r,echo=FALSE,warning=FALSE}
 set.seed(111)
@@ -157,7 +174,6 @@ whiteHate_200times %>%
 
 
 ```{r,echo=FALSE,warning=FALSE}
->>>>>>> adfe186447ff523baedcd7d90d2bc9740cc0cfba
 whiteHate_200times %>% 
   ggplot(aes(x = estimate)) +
   geom_histogram(bins = 20) +
@@ -168,7 +184,16 @@ whiteHate_200times %>%
 
 _Seeing the wide range in confidence intervals in our actual data set, we decided to fit a confidence interval based on 200 bootstrapped samples from the original data set. The reasoning behind modeling the confidence interval for the specific value of share_non_white would be the usefuness of this data in further study. We learned that there is a much larger range in the effect of non white population on rates of hate crimes than previously thought. In further study where we might include data on states and voting in the 2016 election, knowing how much the effect that having non white residents in an area can give us more information on where we can pin down the specific effects on data that the different variables may bring._
 
-_Further research may be centered on the effect that other factors, mainly state and candidate voted for, have on the number of hate crimes. Having a confidence interval for number of non white people in an area is meant to help facilitate this possible future research. Ultimately, the confidence intervals and p-values are based on how much the data we are presented or we have simulated can vary within the bounds in which we observe and put onto it, and further study could also focus on creating scenarios that may be outside the bounds of our current exploration._ 
+*    Seeing the wide range in confidence intervals in our actual data set, we decided to fit a confidence interval based on 200 bootstrapped samples from the original data set. 
+
+*    The reasoning behind modeling the confidence interval for the specific value of share_non_white would be the usefuness of this data in further study. 
+
+*    We learned that there is a much larger range in the effect of non white population on rates of hate crimes than previously thought.
+
+In further study where we might include data on states and voting in the 2016 election, knowing how much the effect that having non white residents in an area can give us more information on where we can pin down the specific effects on data that the different variables may bring.
+
+
+Further research may be centered on the effect that other factors, mainly state and candidate voted for, have on the number of hate crimes. Having a confidence interval for number of non white people in an area is meant to help facilitate this possible future research. Ultimately, the confidence intervals and p-values are based on how much the data we are presented or we have simulated can vary within the bounds in which we observe and put onto it, and further study could also focus on creating scenarios that may be outside the bounds of our current exploration.
 
 ## Limitations
 
